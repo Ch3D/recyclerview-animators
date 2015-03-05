@@ -20,7 +20,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.animation.OvershootInterpolator;
 
-public class OvershootInRightAnimator extends BaseItemAnimator {
+public class OvershootInRightAnimator extends BaseItemAnimatorSimple {
 
     @Override
     protected void animateRemoveImpl(final RecyclerView.ViewHolder holder) {

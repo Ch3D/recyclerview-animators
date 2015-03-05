@@ -20,7 +20,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.animation.BounceInterpolator;
 
-public class BounceInAnimator extends BaseItemAnimator {
+public class BounceInAnimator extends BaseItemAnimatorSimple {
 
     @Override
     protected void animateRemoveImpl(final RecyclerView.ViewHolder holder) {

@@ -36,7 +36,7 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
     private ArrayList<MoveInfo> mPendingMoves = new ArrayList<>();
     private ArrayList<ChangeInfo> mPendingChanges = new ArrayList<>();
 
-    private ArrayList<ArrayList<ViewHolder>> mAdditionsList =
+    protected ArrayList<ArrayList<ViewHolder>> mAdditionsList =
             new ArrayList<>();
     private ArrayList<ArrayList<MoveInfo>> mMovesList = new ArrayList<>();
     private ArrayList<ArrayList<ChangeInfo>> mChangesList = new ArrayList<>();
@@ -162,11 +162,7 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
             mPendingAdditions.clear();
             Runnable adder = new Runnable() {
                 public void run() {
-                    for (ViewHolder holder : additions) {
-                        animateAddImpl(holder);
-                    }
-                    additions.clear();
-                    mAdditionsList.remove(additions);
+	                tryAnimateAdd(additions);
                 }
             };
             if (removalsPending || movesPending || changesPending) {
@@ -182,9 +178,9 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
         }
     }
 
-    protected abstract void animateRemoveImpl(final RecyclerView.ViewHolder holder);
+	protected abstract void tryAnimateAdd(final ArrayList<ViewHolder> additions);
 
-    protected abstract void animateAddImpl(final RecyclerView.ViewHolder holder);
+	protected abstract void animateRemoveImpl(final RecyclerView.ViewHolder holder);
 
     protected void preAnimateRemove(final RecyclerView.ViewHolder holder) {
     }

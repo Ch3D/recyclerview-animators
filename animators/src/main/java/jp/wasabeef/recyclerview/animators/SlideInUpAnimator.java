@@ -19,7 +19,7 @@ package jp.wasabeef.recyclerview.animators;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 
-public class SlideInUpAnimator extends BaseItemAnimator {
+public class SlideInUpAnimator extends BaseItemAnimatorSimple {
 
     @Override
     protected void animateRemoveImpl(final RecyclerView.ViewHolder holder) {
