@@ -42,7 +42,7 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
     private ArrayList<ArrayList<ChangeInfo>> mChangesList = new ArrayList<>();
 
     protected ArrayList<ViewHolder> mAddAnimations = new ArrayList<>();
-    private ArrayList<ViewHolder> mMoveAnimations = new ArrayList<>();
+    protected ArrayList<ViewHolder> mMoveAnimations = new ArrayList<>();
     protected ArrayList<ViewHolder> mRemoveAnimations = new ArrayList<>();
     private ArrayList<ViewHolder> mChangeAnimations = new ArrayList<>();
 
@@ -227,7 +227,7 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
         return true;
     }
 
-    private void animateMoveImpl(final ViewHolder holder, int fromX, int fromY, int toX, int toY) {
+    protected void animateMoveImpl(final ViewHolder holder, int fromX, int fromY, int toX, int toY) {
         final View view = holder.itemView;
         final int deltaX = toX - fromX;
         final int deltaY = toY - fromY;
@@ -484,7 +484,7 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
      * pending/running, call #dispatchAnimationsFinished() to notify any
      * listeners.
      */
-    private void dispatchFinishedWhenDone() {
+    protected final void dispatchFinishedWhenDone() {
         if (!isRunning()) {
             dispatchAnimationsFinished();
         }
@@ -596,7 +596,7 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
         ViewCompat.animate(v).setInterpolator(null);
     }
 
-    private static class VpaListenerAdapter implements ViewPropertyAnimatorListener {
+    protected static class VpaListenerAdapter implements ViewPropertyAnimatorListener {
 
         @Override
         public void onAnimationStart(View view) {
